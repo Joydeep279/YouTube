@@ -3,7 +3,7 @@ import NavSlice from "./NavSlice";
 
 const Store = configureStore({
   reducer: {
-    Navigation: NavSlice,
+    NavBar: NavSlice,
   },
 });
 

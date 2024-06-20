@@ -1,12 +1,12 @@
 import React from "react";
 import SideBar from "./SideBar";
-import VideoContainer from "./VideoContainer";
+import { Outlet } from "react-router-dom";
 
 function MainComponent() {
   return (
     <div className="flex flex-row gap-5">
       <SideBar />
-      <VideoContainer />
+      <Outlet/>
     </div>
   );
 }

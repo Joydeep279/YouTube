@@ -1,21 +1,33 @@
 import React from "react";
-
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/NavSlice";
+import { Link } from "react-router-dom";
 function Header() {
+  const displatch = useDispatch();
+  const toggleMenuHandler = () => {
+    displatch(toggleMenu());
+  };
+
   return (
     <div className="flex items-center justify-between px-5">
       <div className="flex gap-5">
-        <button>
+        <button
+          onClick={() => {
+            toggleMenuHandler();
+          }}>
           <img
             className="w-6 h-7"
             src="https://icons.veryicon.com/png/o/miscellaneous/big-data-regular-monochrome-icon/sidebar-4.png"
             alt="sidebar"
           />
         </button>
-        <img
-          className="w-28 h-14"
-          src="https://1000logos.net/wp-content/uploads/2017/05/Black-YouTube-logo.png"
-          alt="YouTube"
-        />
+        <a href="/">
+          <img
+            className="w-28 h-14"
+            src="https://1000logos.net/wp-content/uploads/2017/05/Black-YouTube-logo.png"
+            alt="YouTube"
+          />
+        </a>
       </div>
       <div className="flex items-center rounded-2xl border p-0 m-0 h-10">
         <input

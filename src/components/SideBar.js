@@ -1,8 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const iconTailwindConfig = "w-6 h-6 mix-blend-multiply";
 const parentTailwindConfig = "flex flex-row gap-5";
 function SideBar() {
-
+  const isVisible = useSelector((store) => store.NavBar.isMenuOpen);
+  if (isVisible) {
+    return <></>;
+  }
   return (
     <div className="flex flex-col gap-2 pl-5 bg-slate-50">
       <div className={parentTailwindConfig}>
@@ -11,7 +16,7 @@ function SideBar() {
           src="https://www.vhv.rs/dpng/d/423-4233698_thumb-image-home-button-icon-png-transparent-png.png"
           alt="Home"
         />
-        <span>Home</span>
+        <Link to={"/"}>Home</Link>
       </div>
       <div className={parentTailwindConfig}>
         <img
