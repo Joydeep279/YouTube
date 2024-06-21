@@ -1,16 +1,17 @@
 const VideoCart = (props) => {
-  const { thumbnails, title, channelTitle } = props.props.snippet;
+  const { id } = props.props;
+  const { title, channelTitle } = props.props.snippet;
   const { viewCount } = props.props.statistics;
   return (
-    <div className="flex flex-col w-72 h-72 gap-2">
+    <div className="flex flex-col w-[400px] h-[324]  flex-nowrap p-5">
       <img
-        src={thumbnails.medium.url}
+        src={"https://i.ytimg.com/vi/" + id + "/hq720.jpg"}
         alt={title}
-        className="w-72 h-40 rounded-md"
+        className="w-[400px] h-[224px] rounded-md"
       />
-      <span>{title}</span>
+      <span className="font-medium font-sans">{title}</span>
       <span>{channelTitle}</span>
-      <span>{viewCount / 1000000}M</span>/
+      <span>{Math.round(viewCount / 1000000)}M Views</span>
     </div>
   );
 };

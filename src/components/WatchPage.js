@@ -5,7 +5,7 @@ function WatchPage() {
   const [searchParams] = useSearchParams();
   return (
     <iframe
-        className="m-10 rounded-xl"
+      className="m-10 rounded-xl"
       width="1000"
       height="500"
       src={"https://www.youtube.com/embed/" + searchParams.get("v")}

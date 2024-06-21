@@ -9,7 +9,7 @@ function SideBar() {
     return <></>;
   }
   return (
-    <div className="flex flex-col gap-2 pl-5 bg-slate-50">
+    <div className="flex flex-col gap-2 pl-5 bg-slate-50 min-w-[216px]">
       <div className={parentTailwindConfig}>
         <img
           className={iconTailwindConfig}
