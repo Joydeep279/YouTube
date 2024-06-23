@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/NavSlice";
-import { Link } from "react-router-dom";
+import { youtubeSearchApi } from "../utils/Constant";
 function Header() {
   const displatch = useDispatch();
   const toggleMenuHandler = () => {
     displatch(toggleMenu());
   };
+  const [query, setQuery] = useState("");
+  const [searchSuggestion, setSuggestion] = useState([]);
+  const searchApiCall = async () => {
+    const apiData = await fetch(youtubeSearchApi + query);
+    const JSON = await apiData.json();
+    setSuggestion(JSON[1]);
+  };
 
+  useEffect(() => {
+    const timmer = setTimeout(() => {
+      searchApiCall();
+    }, 200);
+
+    return () => {
+      clearTimeout(timmer);
+    };
+  }, [query]);
   return (
     <div className="flex items-center justify-between px-5">
       <div className="flex gap-5">
@@ -29,18 +45,31 @@ function Header() {
           />
         </a>
       </div>
-      <div className="flex items-center rounded-2xl border p-0 m-0 h-10">
-        <input
-          type="text"
-          className=" border w-[500px] h-10 rounded-l-2xl outline-1 outline-blue-500 px-5 py-2"></input>
-        <button>
-          <img
-            className="w-16 h-10 rounded-r-2xl"
-            alt="Search"
-            src="https://w7.pngwing.com/pngs/403/380/png-transparent-computer-icons-youtube-symbol-information-black-dandelion-circle-symbol-magnifying-glass.png"
-          />
-        </button>
+      <div className="flex flex-col">
+        <div className="flex items-center rounded-2xl border p-0 m-0 h-10">
+          <input
+            type="text"
+            className=" border w-[500px] h-10 rounded-l-2xl outline-1 outline-blue-500 px-5 py-2"
+            onChange={(text) => {
+              setQuery(text.target.value);
+            }}></input>
+          <button>
+            <img
+              className="w-16 h-10 rounded-r-2xl"
+              alt="Search"
+              src="https://w7.pngwing.com/pngs/403/380/png-transparent-computer-icons-youtube-symbol-information-black-dandelion-circle-symbol-magnifying-glass.png"
+            />
+          </button>
+        </div>
+        {searchSuggestion.length !== 0 ? (
+          <div className=" mt-10 px-5 flex flex-col fixed bg-white w-[500px] rounded-2xl shadow-2xl border">
+            {searchSuggestion.map((data) => (
+              <span className="border-b-1 w-full">{data}</span>
+            ))}
+          </div>
+        ) : null}
       </div>
+
       <div className="flex items-center gap-5">
         <img
           className="rounded-full w-7 h-7"
