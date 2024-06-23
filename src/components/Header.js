@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/NavSlice";
 import { youtubeSearchApi } from "../utils/Constant";
+import { addToCache } from "../utils/SearchCache";
 function Header() {
   const displatch = useDispatch();
+  const searchCache = useSelector((Store) => Store.SearchData);
+  console.log(searchCache);
   const toggleMenuHandler = () => {
     displatch(toggleMenu());
   };
@@ -13,16 +16,21 @@ function Header() {
     const apiData = await fetch(youtubeSearchApi + query);
     const JSON = await apiData.json();
     setSuggestion(JSON[1]);
+    displatch(addToCache({ [query]: JSON[1] }));
   };
 
   useEffect(() => {
-    const timmer = setTimeout(() => {
-      searchApiCall();
-    }, 200);
+    if (searchCache[query]) {
+      setSuggestion(searchCache[query]);
+    } else {
+      const timmer = setTimeout(() => {
+        searchApiCall();
+      }, 200);
 
-    return () => {
-      clearTimeout(timmer);
-    };
+      return () => {
+        clearTimeout(timmer);
+      };
+    }
   }, [query]);
   return (
     <div className="flex items-center justify-between px-5">
@@ -64,7 +72,7 @@ function Header() {
         {searchSuggestion.length !== 0 ? (
           <div className=" mt-10 px-5 flex flex-col fixed bg-white w-[500px] rounded-2xl shadow-2xl border">
             {searchSuggestion.map((data) => (
-              <span className="border-b-1 w-full">{data}</span>
+              <span className="py-1 shadow w-full">{data}</span>
             ))}
           </div>
         ) : null}

@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import NavSlice from "./NavSlice";
-console.log("Store Called");
+import SearchCache from "./SearchCache";
 const Store = configureStore({
   reducer: {
     NavBar: NavSlice,
+    SearchData: SearchCache,
   },
 });
 
