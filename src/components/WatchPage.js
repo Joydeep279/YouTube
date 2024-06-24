@@ -1,5 +1,6 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
+import CommentContainer from "./Comments";
 
 function WatchPage() {
   const [searchParams] = useSearchParams();
@@ -14,7 +15,7 @@ function WatchPage() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen></iframe>
-        <div>Comment</div>
+      <CommentContainer />
     </div>
   );
 }

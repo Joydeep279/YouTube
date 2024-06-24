@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-console.log("NavSlice Called");
 const NavSlice = createSlice({
   name: "NavBar",
   initialState: {

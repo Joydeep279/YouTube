@@ -6,7 +6,6 @@ import { addToCache } from "../utils/SearchCache";
 function Header() {
   const displatch = useDispatch();
   const searchCache = useSelector((Store) => Store.SearchData);
-  console.log(searchCache);
   const toggleMenuHandler = () => {
     displatch(toggleMenu());
   };

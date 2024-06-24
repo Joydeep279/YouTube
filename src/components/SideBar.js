@@ -6,7 +6,7 @@ const parentTailwindConfig = "flex flex-row gap-5";
 function SideBar() {
   const isVisible = useSelector((store) => store.NavBar.isMenuOpen);
   if (isVisible) {
-    return <></>;
+    return null;
   }
   return (
     <div className="flex flex-col gap-5 pl-5 bg-slate-50 min-w-[216px] transition-all">
