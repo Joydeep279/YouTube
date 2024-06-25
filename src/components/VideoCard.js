@@ -11,9 +11,7 @@ const VideoCart = (props) => {
       />
       <span className="font-medium font-sans text-nowrap">{title}</span>
       <span className="font-normal font-sans">{channelTitle}</span>
-      <span className="font-normal font-sans">
-        {Math.round(viewCount / 1000000)}M Views
-      </span>
+      <span className="font-normal font-sans">{viewCount}</span>
     </div>
   );
 };
