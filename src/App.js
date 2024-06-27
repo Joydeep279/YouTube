@@ -6,7 +6,7 @@ import store from "./utils/Store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import VideoContainer from "./components/VideoContainer";
 import WatchPage from "./components/WatchPage";
-import Test from "./components/Test";
+import Factorial from "./components/Test";
 
 const appRouter = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path:"/test",
-        element:<Test/>
+        element:<Factorial/>
       }
     ],
   },
