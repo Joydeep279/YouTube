@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import Test2 from "./Test2";
 
 function nthPrime(n) {
   var P = 0;
@@ -34,27 +35,30 @@ function Factorial() {
   const [theme, setTheme] = useState(true);
 
   const [value, setvalue] = useState(0);
-  const Prime = useMemo(()=>nthPrime(value),[value]);
+  const Prime = useMemo(() => nthPrime(value), [value]);
   return (
-    <div
-      className={
-        "flex flex-col gap-5 justify-evenly items-center p-7 m-10 w-60 h-80 border border-black rounded-md " +
-        (theme && "bg-[#3d405b] text-white")
-      }>
-      <input
-        type="number"
-        className="bg-[#b8b8ff] border border-black rounded"
-        value={value}
-        onChange={(value) => setvalue(value.target.value)}
-      />
+    <>
+      <div
+        className={
+          "flex flex-col gap-5 justify-evenly items-center p-7 m-10 w-60 h-80 border border-black rounded-md " +
+          (theme && "bg-[#3d405b] text-white")
+        }>
+        <input
+          type="number"
+          className="bg-[#b8b8ff] border border-black rounded"
+          value={value}
+          onChange={(value) => setvalue(value.target.value)}
+        />
 
-      <h1>Prime: {Prime}</h1>
-      <button
-        className="bg-[#9381ff] rounded px-1"
-        onClick={() => setTheme(!theme)}>
-        Theme
-      </button>
-    </div>
+        <h1>Prime: {Prime}</h1>
+        <button
+          className="bg-[#9381ff] rounded px-1"
+          onClick={() => setTheme(!theme)}>
+          Theme
+        </button>
+      </div>
+      <Test2 />
+    </>
   );
 }
 
