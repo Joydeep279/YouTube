@@ -33,7 +33,7 @@ function Header() {
   }, [query]);
   return (
     <div className="flex items-center justify-between px-5">
-      <div className="flex gap-5">
+      <div className="flex gap-5" key={"leftComponent"}>
         <button
           onClick={() => {
             toggleMenuHandler();
@@ -52,7 +52,7 @@ function Header() {
           />
         </a>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col" key={"centerComponent"}>
         <div className="flex items-center rounded-2xl border p-0 m-0 h-10">
           <input
             type="text"
@@ -77,7 +77,7 @@ function Header() {
         ) : null}
       </div>
 
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5" key={"rightComponent"}>
         <img
           className="rounded-full w-7 h-7"
           src="https://www.pngall.com/wp-content/uploads/11/Youtube-Bell-Icon-Button-PNG-Images.png"

@@ -6,7 +6,7 @@ function Test2() {
   const Z = useRef(0);
   return (
     <div className="flex flex-col gap-5 justify-evenly items-center p-7 m-10 w-60 h-80 border border-black rounded-md bg-[#3d405b] text-white">
-      <div className="flex gap-5">
+      <div className="flex gap-5" key={"xComponent"}>
         <button
           className="bg-[#9381ff] rounded px-1"
           onClick={() => {
@@ -17,7 +17,7 @@ function Test2() {
         </button>
         <span>{X}</span>
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-5" key={"yComponent"}>
         <button
           className="bg-[#9381ff] rounded px-1"
           onClick={() => {
@@ -28,7 +28,7 @@ function Test2() {
         </button>
         <span>{Y}</span>
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-5" key={"zComponent"}>
         <button
           className="bg-[#9381ff] rounded px-1"
           onClick={() => {
