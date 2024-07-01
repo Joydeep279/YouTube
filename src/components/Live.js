@@ -36,7 +36,7 @@ const Live = () => {
   useEffect(() => {
     const liveChatApiCall = setInterval(() => {
       apiCall();
-    }, 500);
+    }, 2000);
 
     return () => clearInterval(liveChatApiCall);
   }, []);
@@ -44,7 +44,7 @@ const Live = () => {
   return (
     <div className="mt-5 p-0">
       <div className="flex justify-center">
-        <span>LiveChat</span>
+        <span className="font-bold">LiveChat</span>
       </div>
       <div className="flex flex-col-reverse justify-start gap-5 py-5 px-2 border w-96 h-[460px] rounded-lg overflow-y-scroll">
         {liveChatData.map((element, index) => (
@@ -55,18 +55,21 @@ const Live = () => {
         className="border w-96 h-10 rounded flex justify-between"
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch(
-            Insert({
-              name: "Joydeep",
-              msg: customMsg,
-            })
-          );
+          if (customMsg.length !== 0) {
+            dispatch(
+              Insert({
+                name: "Joydeep",
+                msg: customMsg,
+              })
+            );
+          }
+
           setMsg("");
         }}>
         <input
           value={customMsg}
           onChange={(data) => setMsg(data.target.value)}
-          className="w-80 h-full rounded"
+          className="w-80 h-full rounded p-2"
           type="text"
           placeholder="Enter the Text"
         />
