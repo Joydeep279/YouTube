@@ -22,9 +22,9 @@ const appRouter = createBrowserRouter([
         element: <WatchPage />,
       },
       {
-        path:"/test",
-        element:<Factorial/>
-      }
+        path: "/test",
+        element: <Factorial />,
+      },
     ],
   },
 ]);
